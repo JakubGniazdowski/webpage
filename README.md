@@ -1,6 +1,4 @@
-# Green House - Świadectwa i Audyty Energetyczne
-
-Profesjonalna strona internetowa firmy Green House oferującej świadectwa charakterystyki energetycznej i pomiary elektryczne w Ostrołęce.
+# Strona internetowa
 
 ##  Funkcje strony
 
