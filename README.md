@@ -2,7 +2,7 @@
 
 Profesjonalna strona internetowa firmy Green House oferującej świadectwa charakterystyki energetycznej i pomiary elektryczne w Ostrołęce.
 
-## 🌟 Funkcje strony
+##  Funkcje strony
 
 - **Nowoczesny design** z ciemnym motywem i fioletowymi gradientami
 - **Responsywny layout** dostosowany do wszystkich urządzeń
@@ -10,22 +10,22 @@ Profesjonalna strona internetowa firmy Green House oferującej świadectwa chara
 - **Dwukolumnowy układ** dla usług energetycznych i pomiarów elektrycznych
 - **Interaktywne animacje** w tle
 
-## 🚀 Technologie
+##  Technologie
 
 - **HTML5** - struktura strony
 - **CSS3** - stylowanie z animacjami i gradientami
 - **JavaScript** - interaktywne elementy i animacje
 
-## 📞 Kontakt
+##  Kontakt
 
 - **Telefon**: 509 961 824
 - **Email**: slawomir.drezek@gmail.com
 
-## 🔧 Instalacja lokalna
+##  Instalacja lokalna
 
 1. Sklonuj repozytorium
 2. Otwórz `index.html` w przeglądarce
 3. Gotowe!
 
 ---
-*Stworzone przez Sławomira Dręzka - Green House*
+*Stworzone przez Jakuba Gniazdowskiego *
