@@ -6,7 +6,13 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0d0d0d 75%, #050505 100%);
+    background: 
+        linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(10, 10, 10, 0.9) 25%, rgba(17, 17, 17, 0.85) 50%, rgba(13, 13, 13, 0.9) 75%, rgba(5, 5, 5, 0.85) 100%),
+        url('photos/different_photo_inbacground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     min-height: 100vh;
     color: #d0d0d0;
     line-height: 1.6;
@@ -26,7 +32,7 @@ body {
 
 .particle {
     position: absolute;
-    background: linear-gradient(45deg, #8b5cf6, #a855f7, #c084fc);
+    background: linear-gradient(45deg, #10b981, #059669, #34d399);
     border-radius: 50%;
     opacity: 0.05;
     animation: float 6s ease-in-out infinite;
@@ -43,17 +49,40 @@ body {
     padding: 20px;
 }
 
+/* Parallax background effect */
+.parallax-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Header background overlay */
 .header {
     text-align: center;
     margin-bottom: 60px;
     position: relative;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('photos/photo_infrontbacground_3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 60px 20px;
+    border-radius: 25px;
+    margin: 20px 0 60px 0;
+}
+
+/* Glowing effect for important text */
+.glow {
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
 }
 
 .logo {
     max-width: 300px;
     height: auto;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
     margin-bottom: 30px;
     transition: transform 0.3s ease;
 }
@@ -63,7 +92,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -75,19 +104,19 @@ body {
     font-size: 3.5em;
     margin-bottom: 20px;
     text-align: center;
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
     font-weight: 800;
-    text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
     animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes titleGlow {
-    from { filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5)); }
-    to { filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8)); }
+    from { filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5)); }
+    to { filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.8)); }
 }
 
 .subtitle {
@@ -99,7 +128,7 @@ body {
 }
 
 .highlight {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -117,14 +146,35 @@ body {
 }
 
 .service-side {
-    background: rgba(10, 10, 15, 0.9);
+    background: 
+        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
+        url('photos/photo_infrontbacground.jpg');
+    background-size: cover;
+    background-position: center;
     border-radius: 25px;
     padding: 40px;
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(139, 92, 246, 0.15);
+    border: 2px solid rgba(16, 185, 129, 0.15);
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+}
+
+/* Specific backgrounds for different services */
+.service-side:first-child {
+    background: 
+        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
+        url('photos/energy_classes.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.service-side:last-child {
+    background: 
+        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
+        url('photos/elektryk-pracujacy-w-panelu-elektrycznym-elektryk-w-kombinezonie.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .service-side::before {
@@ -134,21 +184,21 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #8b5cf6, #a855f7, #c084fc, #e879f9);
+    background: linear-gradient(90deg, #10b981, #059669, #34d399, #6ee7b7);
     border-radius: 25px 25px 0 0;
 }
 
 .service-side:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(139, 92, 246, 0.2);
-    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 .service-title {
     font-size: 2.2em;
     margin-bottom: 30px;
     text-align: center;
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -160,7 +210,7 @@ body {
     text-align: center;
     font-size: 4em;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -173,18 +223,18 @@ body {
     padding: 40px;
     margin-bottom: 30px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.15);
     backdrop-filter: blur(15px);
     transition: all 0.3s ease;
 }
 
 .section:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(139, 92, 246, 0.15);
+    box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
 }
 
 .section h2 {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -205,7 +255,7 @@ body {
     padding: 20px;
     background: rgba(5, 5, 10, 0.8);
     border-radius: 15px;
-    border-left: 5px solid #8b5cf6;
+    border-left: 5px solid #10b981;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -218,7 +268,7 @@ body {
     left: 0;
     width: 0;
     height: 100%;
-    background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.1));
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.1));
     transition: width 0.4s ease;
 }
 
@@ -229,21 +279,26 @@ body {
 .features-list li:hover {
     transform: translateX(15px);
     background: rgba(5, 5, 10, 0.95);
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
-    border-left-color: #c084fc;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    border-left-color: #34d399;
 }
 
 .checkmark {
-    color: #8b5cf6;
+    color: #10b981;
     font-weight: bold;
     margin-right: 15px;
     font-size: 1.3em;
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
 }
 
 .contact-section {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
-    border: 3px solid #8b5cf6;
+    background: 
+        linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.15) 100%),
+        linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.9)),
+        url('photos/3d-projekt-domu.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #10b981;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -256,7 +311,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.05), transparent);
+    background: linear-gradient(45deg, transparent, rgba(16, 185, 129, 0.05), transparent);
     animation: shimmer 3s linear infinite;
 }
 
@@ -273,7 +328,7 @@ body {
 }
 
 .phone, .email {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -286,12 +341,12 @@ body {
 
 .phone:hover, .email:hover {
     transform: scale(1.1);
-    text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-    filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.3));
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.3));
 }
 
 .cta {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -301,9 +356,9 @@ body {
     text-align: center;
     margin: 40px 0;
     padding: 30px;
-    border: 3px solid #8b5cf6;
+    border: 3px solid #10b981;
     border-radius: 20px;
-    background-color: rgba(139, 92, 246, 0.05);
+    background-color: rgba(16, 185, 129, 0.05);
     transition: all 0.4s ease;
     cursor: pointer;
     position: relative;
@@ -312,12 +367,12 @@ body {
 
 .cta:hover {
     transform: scale(1.02);
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
-    border-color: #c084fc;
+    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
+    border-color: #34d399;
 }
 
 .btn {
-    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    background: linear-gradient(135deg, #10b981, #059669);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -327,13 +382,13 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 10px;
-    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
-    background: linear-gradient(135deg, #a855f7, #c084fc);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #059669, #34d399);
 }
 
 @media (max-width: 1024px) {
@@ -344,6 +399,11 @@ body {
     
     .title {
         font-size: 2.5em;
+    }
+    
+    /* Disable parallax on mobile for better performance */
+    body, .header {
+        background-attachment: scroll;
     }
 }
 
@@ -374,6 +434,16 @@ body {
 
     .service-icon {
         font-size: 3em;
+    }
+    
+    /* Disable background images on small screens for better readability */
+    .service-side {
+        background: rgba(10, 10, 15, 0.95) !important;
+    }
+    
+    .header {
+        background: rgba(0, 0, 0, 0.8) !important;
+        padding: 40px 15px;
     }
 }
 
@@ -407,13 +477,13 @@ html {
 
 /* Glowing effect for important text */
 .glow {
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
 }
 
 /* Interactive service cards */
 .service-feature {
-    background: rgba(139, 92, 246, 0.05);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
     border-radius: 15px;
     padding: 20px;
     margin: 15px 0;
@@ -421,12 +491,12 @@ html {
 }
 
 .service-feature:hover {
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     transform: scale(1.02);
 }
 
 .service-feature h4 {
-    color: #c084fc;
+    color: #34d399;
     margin-bottom: 10px;
     font-weight: 600;
 }
