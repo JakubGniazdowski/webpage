@@ -1,3 +1,21 @@
+// Force cache refresh for mobile devices
+function forceCacheRefresh() {
+    // Check if this is a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // Force reload stylesheets
+        const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+        stylesheets.forEach(link => {
+            const href = link.href;
+            const timestamp = new Date().getTime();
+            link.href = href.includes('?') ? 
+                href + '&t=' + timestamp : 
+                href + '?t=' + timestamp;
+        });
+    }
+}
+
 // Create animated background particles
 function createParticles() {
     const bgAnimation = document.getElementById('bgAnimation');
@@ -83,32 +101,6 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize everything when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    createParticles();
-    addServiceInteractivity();
-    
-    // Initial reveal
-    setTimeout(() => {
-        revealOnScroll();
-    }, 500);
-    
-    // Add scroll listener
-    window.addEventListener('scroll', revealOnScroll);
-    
-    // Add hover effects to buttons
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.05)';
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
-
 // Add parallax effect to background
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
@@ -132,3 +124,31 @@ setInterval(() => {
         particle.style.top = Math.max(0, Math.min(100, newTop)) + '%';
     });
 }, 3000);
+
+// Initialize everything when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    forceCacheRefresh();
+    createParticles();
+    revealOnScroll();
+    addServiceInteractivity();
+    
+    // Initial reveal
+    setTimeout(() => {
+        revealOnScroll();
+    }, 500);
+    
+    // Add scroll listener
+    window.addEventListener('scroll', revealOnScroll);
+    
+    // Add hover effects to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.05)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
