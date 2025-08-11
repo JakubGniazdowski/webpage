@@ -1,3 +1,12 @@
+:root {
+    /* Brand palette */
+    --green-1: #27bb00;
+    --green-2: #1ea000;
+    --green-3: #35d000;
+    --green-4: #6ee000;
+    --gradient-text: linear-gradient(135deg, var(--green-1) 0%, var(--green-2) 25%, var(--green-3) 50%, var(--green-4) 75%, #ffffff 100%);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +16,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: 
-        linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(10, 10, 10, 0.9) 25%, rgba(17, 17, 17, 0.85) 50%, rgba(13, 13, 13, 0.9) 75%, rgba(5, 5, 5, 0.85) 100%),
-        url('photos/different_photo_inbacground.jpg');
+    linear-gradient(135deg, #000000 0%, #0a0a0f 25%, #0d0d12 50%, #0a0a0f 75%, #000000 100%);
+    background-color: #0a0a0f; /* solid dark base to avoid light bleed-through */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -32,7 +41,7 @@ body {
 
 .particle {
     position: absolute;
-    background: linear-gradient(45deg, #27bb00, #1ea000, #35d000);
+    background: linear-gradient(45deg, var(--green-1), var(--green-2), var(--green-3));
     border-radius: 50%;
     opacity: 0.05;
     animation: float 6s ease-in-out infinite;
@@ -46,7 +55,7 @@ body {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 80px 20px 20px;
 }
 
 /* Parallax background effect */
@@ -63,14 +72,20 @@ body {
     margin-bottom: 60px;
     position: relative;
     background: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('photos/photo_infrontbacground_3.jpg');
+        radial-gradient(1200px 600px at 50% -10%, rgba(39, 187, 0, 0.08), transparent 60%),
+        linear-gradient(180deg, rgba(10, 10, 15, 0.96), rgba(5, 5, 8, 0.98));
     background-size: cover;
     background-position: center;
+    animation: headerPan 30s ease-in-out infinite alternate;
     background-attachment: fixed;
     padding: 60px 20px;
     border-radius: 25px;
     margin: 20px 0 60px 0;
+}
+
+@keyframes headerPan {
+    from { background-position: center 20%, center; }
+    to { background-position: center 80%, center; }
 }
 
 /* Glowing effect for important text */
@@ -92,7 +107,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -101,22 +116,58 @@ body {
 }
 
 .title {
-    font-size: 3.5em;
+    font-size: 4.5em;
     margin-bottom: 20px;
     text-align: center;
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
     font-weight: 800;
-    text-shadow: 0 0 30px rgba(39, 187, 0, 0.5);
-    animation: titleGlow 3s ease-in-out infinite alternate;
+    animation: gradientWave 5s ease-in-out infinite;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    min-height: 1.2em; /* Reserve space for text */
+}
+
+.subtitle-h1 {
+    font-size: 0.3em;
+    font-weight: 400;
+    color: #d0d0d0;
+    text-shadow: none;
+    background: none;
+    -webkit-text-fill-color: initial;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    margin-top: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: none;
+    filter: none;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes gradientWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes titleGlow {
-    from { filter: drop-shadow(0 0 10px rgba(39, 187, 0, 0.5)); }
-    to { filter: drop-shadow(0 0 20px rgba(39, 187, 0, 0.8)); }
+    from {
+        text-shadow: 0 0 10px rgba(39, 187, 0, 0.4), 0 0 20px rgba(39, 187, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.1);
+        filter: drop-shadow(0 0 15px rgba(39, 187, 0, 0.6));
+    }
+    to {
+        text-shadow: 0 0 20px rgba(39, 187, 0, 0.6), 0 0 30px rgba(39, 187, 0, 0.4), 0 0 50px rgba(255, 255, 255, 0.2);
+        filter: drop-shadow(0 0 25px rgba(39, 187, 0, 0.9));
+    }
 }
 
 .subtitle {
@@ -128,13 +179,19 @@ body {
 }
 
 .highlight {
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
     font-weight: 700;
     font-size: 1.2em;
+}
+
+/* Reusable subheading for gradient section titles inside sections */
+.subheading {
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }
 
 /* Two-column layout */
@@ -147,8 +204,8 @@ body {
 
 .service-side {
     background: 
-        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
-        url('photos/photo_infrontbacground.jpg');
+        radial-gradient(800px 400px at 0% 0%, rgba(39, 187, 0, 0.06), transparent 60%),
+        linear-gradient(180deg, rgba(10, 10, 15, 0.98), rgba(8, 8, 12, 0.98));
     background-size: cover;
     background-position: center;
     border-radius: 25px;
@@ -163,16 +220,16 @@ body {
 /* Specific backgrounds for different services */
 .service-side:first-child {
     background: 
-        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
-        url('photos/energy_classes.jpg');
+        radial-gradient(800px 400px at 100% 0%, rgba(39, 187, 0, 0.06), transparent 60%),
+        linear-gradient(180deg, rgba(10, 10, 15, 0.98), rgba(8, 8, 12, 0.98));
     background-size: cover;
     background-position: center;
 }
 
 .service-side:last-child {
     background: 
-        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
-        url('photos/elektryk-pracujacy-w-panelu-elektrycznym-elektryk-w-kombinezonie.jpg');
+        radial-gradient(800px 400px at 0% 100%, rgba(39, 187, 0, 0.06), transparent 60%),
+        linear-gradient(180deg, rgba(10, 10, 15, 0.98), rgba(8, 8, 12, 0.98));
     background-size: cover;
     background-position: center;
 }
@@ -184,7 +241,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #27bb00, #1ea000, #35d000, #6ee000);
+    background: linear-gradient(90deg, var(--green-1), var(--green-2), var(--green-3), var(--green-4));
     border-radius: 25px 25px 0 0;
 }
 
@@ -198,7 +255,7 @@ body {
     font-size: 2.2em;
     margin-bottom: 30px;
     text-align: center;
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -210,7 +267,7 @@ body {
     text-align: center;
     font-size: 4em;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -218,7 +275,7 @@ body {
 }
 
 .section {
-    background: rgba(10, 10, 15, 0.9);
+    background: rgba(10, 10, 15, 0.96);
     border-radius: 25px;
     padding: 40px;
     margin-bottom: 30px;
@@ -234,7 +291,7 @@ body {
 }
 
 .section h2 {
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -253,7 +310,7 @@ body {
 .features-list li {
     margin-bottom: 20px;
     padding: 20px;
-    background: rgba(5, 5, 10, 0.8);
+    background: rgba(5, 5, 10, 0.92);
     border-radius: 15px;
     border-left: 5px solid #27bb00;
     transition: all 0.4s ease;
@@ -294,8 +351,8 @@ body {
 .contact-section {
     background: 
         linear-gradient(135deg, rgba(39, 187, 0, 0.15) 0%, rgba(53, 208, 0, 0.15) 100%),
-        linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.9)),
-        url('photos/3d-projekt-domu.jpg');
+        radial-gradient(1200px 600px at 50% 120%, rgba(39, 187, 0, 0.08), transparent 60%),
+        linear-gradient(rgba(10, 10, 15, 0.96), rgba(10, 10, 15, 0.96));
     background-size: cover;
     background-position: center;
     border: 3px solid #27bb00;
@@ -328,7 +385,7 @@ body {
 }
 
 .phone, .email {
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -346,7 +403,7 @@ body {
 }
 
 .cta {
-    background: linear-gradient(135deg, #27bb00 0%, #1ea000 25%, #35d000 50%, #6ee000 75%, #a7f000 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -372,7 +429,7 @@ body {
 }
 
 .btn {
-    background: linear-gradient(135deg, #27bb00, #1ea000);
+    background: linear-gradient(135deg, var(--green-1), var(--green-2));
     color: white;
     border: none;
     padding: 15px 30px;
@@ -388,22 +445,127 @@ body {
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(39, 187, 0, 0.4);
-    background: linear-gradient(135deg, #1ea000, #35d000);
+    background: linear-gradient(135deg, var(--green-2), var(--green-3));
 }
 
 @media (max-width: 1024px) {
     .services-container {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
+    }
+
+    .service-icon {
+        font-size: 3em;
     }
     
-    .title {
-        font-size: 2.5em;
+    .content-with-images {
+        flex-direction: column;
+        gap: 16px;
     }
     
-    /* Disable parallax on mobile for better performance */
-    body, .header {
-        background-attachment: scroll;
+    .content-image, .service-image {
+        max-width: 100%;
+        height: 180px;
+    }
+    
+    .header { padding: 40px 15px; }
+}
+
+/* Content with embedded images */
+.content-with-images {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+.text-block {
+    flex: 3;
+}
+
+.embedded-image {
+    flex: 1;
+    text-align: center;
+    min-width: 320px;
+}
+
+.content-image {
+    width: 100%;
+    max-width: 420px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(39, 187, 0, 0.2);
+}
+
+.content-image:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(39, 187, 0, 0.15);
+}
+
+.image-caption {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--green-3);
+    font-weight: 500;
+}
+
+/* Service images */
+.service-image-container {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.service-image {
+    width: 100%;
+    max-width: 360px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(39, 187, 0, 0.3);
+}
+
+.service-image:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Larger desktop screens */
+@media (min-width: 1400px) {
+    .content-with-images {
+    gap: 64px;
+    }
+    
+    .content-image {
+    max-width: 520px;
+    height: 340px;
+    }
+    
+    .service-image {
+    max-width: 440px;
+    height: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .content-with-images {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .content-image, .service-image {
+        max-width: 100%;
+        height: 180px;
     }
 }
 
@@ -436,44 +598,25 @@ body {
         font-size: 3em;
     }
     
-    /* Disable background images on small screens for better readability */
-    .service-side {
-        background: rgba(10, 10, 15, 0.95) !important;
+    .content-with-images {
+        flex-direction: column;
+        gap: 16px;
     }
     
-    .header {
-        background: rgba(0, 0, 0, 0.8) !important;
-        padding: 40px 15px;
+    .content-image, .service-image {
+        max-width: 100%;
+        height: 180px;
     }
+    
+    .header { padding: 40px 15px; }
 }
 
 /* Smooth scrolling animation */
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-/* Entrance animations */
-.fade-in {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-.fade-in:nth-child(1) { animation-delay: 0.1s; }
-.fade-in:nth-child(2) { animation-delay: 0.2s; }
-.fade-in:nth-child(3) { animation-delay: 0.3s; }
-.fade-in:nth-child(4) { animation-delay: 0.4s; }
-.fade-in:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* Entrance animations via class toggle (better with IntersectionObserver) */
+.fade-in { opacity: 0; transform: translateY(50px); transition: opacity .8s ease, transform .8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* Glowing effect for important text */
 .glow {
@@ -510,4 +653,116 @@ html {
 @keyframes pulse {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
+}
+
+/* Toast notifications */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: rgba(10, 10, 15, 0.95);
+    color: #e6e6e6;
+    border: 1px solid rgba(39, 187, 0, 0.25);
+    box-shadow: 0 10px 25px rgba(39, 187, 0, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    min-width: 260px;
+    max-width: 420px;
+}
+
+/* Social Media Menu */
+.social-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(39, 187, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.social-link {
+    color: #d0d0d0;
+    font-size: 2.2em;
+    margin: 0 25px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    color: var(--green-1);
+    transform: scale(1.2) rotate(5deg);
+    text-shadow: 0 0 15px var(--green-1);
+}
+
+.social-link .fa-leaf {
+    color: var(--green-3);
+}
+
+.social-link:hover .fa-leaf {
+    color: #ffffff;
+    text-shadow: 0 0 15px #ffffff;
+}
+
+.social-link:hover .fa-facebook-f {
+    color: #1877F2; /* Facebook Blue */
+    text-shadow: 0 0 15px #1877F2;
+}
+
+.social-link:hover .fa-youtube {
+    color: #FF0000; /* YouTube Red */
+    text-shadow: 0 0 15px #FF0000;
+}
+
+.social-logo {
+    height: 35px; /* Adjust size as needed */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover .social-logo {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+}
+
+@media (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-icon {
+        font-size: 3em;
+    }
+    
+    .content-with-images {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .content-image, .service-image {
+        max-width: 100%;
+        height: 180px;
+    }
+    
+    .header { padding: 40px 15px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .bg-animation { display: none !important; }
 }

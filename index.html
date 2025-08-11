@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Świadectwa i Audyty Energetyczne w Ostrołęce - Sławomir Dręzek GreenHouse</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Sławomir Drężek - Usługi Elektryczne</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-animation" id="bgAnimation"></div>
-    
+    <div class="bg-animation"></div>
+
+    <nav class="social-menu">
+        <a href="https://www.facebook.com/greenhouseinstalacje/" target="_blank" class="social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCCbKCn8WBzaEzQ_Bu9rbKNA" target="_blank" class="social-link" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.greenhouse.biz.pl/" target="_blank" class="social-link" aria-label="Greenhouse Website">
+            <img src="photos/logo_of_greenhouse.png" alt="Greenhouse Logo" class="social-logo">
+        </a>
+    </nav>
+
     <div class="container">
-        <div class="header fade-in">
-            <img src="s7.jpg" alt="Green House Logo" class="logo">
-            <h1 class="title glow">Sławomir Drężek</h1>
+        <header class="header fade-in">
+            <h1 class="title">
+                <span id="main-title"></span>
+                <span class="subtitle-h1">Profesjonalne Usługi Elektryczne</span>
+            </h1>
             <p class="subtitle">Świadectwa i Audyty Energetyczne w Ostrołęce</p>
-        </div>
+        </header>
 
         <div class="section fade-in">
             <p class="subtitle">Zoptymalizuj zużycie energii i zapewnij bezpieczeństwo swojego domu/mieszkania.</p>
@@ -37,6 +50,10 @@
                     <p>Szczegółowa ocena efektywności energetycznej budynku zgodnie z obowiązującymi normami.</p>
                 </div>
 
+                <div class="service-image-container">
+                    <img src="photos/energy_classes.jpg" alt="Klasy energetyczne" class="service-image">
+                </div>
+
                 <div class="service-feature">
                     <h4>📋 Dokumentacja</h4>
                     <p>Przygotowanie świadectw energetycznych wymaganych przy sprzedaży, wynajmie lub użytkowaniu budynku.</p>
@@ -52,7 +69,7 @@
                     <p>Wykonanie świadectwa w ciągu 3 dni roboczych z gwarancją jakości.</p>
                 </div>
 
-                <button class="btn" onclick="showMore('energy')">Dowiedz się więcej</button>
+                <button class="btn" onclick="location.href='#contact'">Dowiedz się więcej</button>
             </div>
 
             <!-- Right side - Pomiary Elektryczne -->
@@ -63,6 +80,10 @@
                 <div class="service-feature">
                     <h4>🔌 Badania Instalacji</h4>
                     <p>Kompleksowe pomiary elektryczne instalacji zgodnie z normami bezpieczeństwa.</p>
+                </div>
+
+                <div class="service-image-container">
+                    <img src="photos/photo_ofmultimeter.jpg" alt="Multimetr - pomiary elektryczne" class="service-image">
                 </div>
 
                 <div class="service-feature">
@@ -80,65 +101,99 @@
                     <p>Pomoc w kontakcie ze sprawdzonymi elektrykami w przypadku wykrycia usterek.</p>
                 </div>
 
-                <button class="btn" onclick="showMore('electrical')">Dowiedz się więcej</button>
+                <button class="btn" onclick="location.href='#contact'">Dowiedz się więcej</button>
             </div>
         </div>
 
         <div class="section fade-in">
             <h2>Dlaczego warto nam zaufać?</h2>
-            <h3 class="gradient-text" style="font-size: 1.5em; margin-bottom: 20px;">Gwarantujemy:</h3>
+            <h3 class="gradient-text subheading">Gwarantujemy:</h3>
             
-            <ul class="features-list">
-                <li>
-                    <span class="checkmark">✔</span>
-                    <strong class="gradient-text">Profesjonalizm i terminowość</strong> - wykonanie świadectw energetycznych i pomiarów elektrycznych w ciągu 3 dni roboczych.
-                </li>
-                <li>
-                    <span class="checkmark">✔</span>
-                    <strong class="gradient-text">Indywidualne podejście</strong> - jeśli nie masz projektu budowlanego, to nie problem! Sami zinwentaryzujemy Twój budynek.
-                </li>
-                <li>
-                    <span class="checkmark">✔</span>
-                    <strong class="gradient-text">Przypomnienia o ważności dokumentów</strong> - nie musisz martwić się o terminy, my przypomnimy Ci o konieczności odnowienia pomiarów.
-                </li>
-                <li>
-                    <span class="checkmark">✔</span>
-                    <strong class="gradient-text">Osobiste dostarczenie dokumentów</strong> - gotowe świadectwa i pomiary przywozimy osobiście, abyś nie musiał tracić czasu.
-                </li>
-            </ul>
+            <div class="content-with-images">
+                <ul class="features-list">
+                    <li>
+                        <span class="checkmark">✔</span>
+                        <strong class="gradient-text">Profesjonalizm i terminowość</strong> - wykonanie świadectw energetycznych i pomiarów elektrycznych w ciągu 3 dni roboczych.
+                    </li>
+                    <li>
+                        <span class="checkmark">✔</span>
+                        <strong class="gradient-text">Indywidualne podejście</strong> - jeśli nie masz projektu budowlanego, to nie problem! Sami zinwentaryzujemy Twój budynek.
+                    </li>
+                    <li>
+                        <span class="checkmark">✔</span>
+                        <strong class="gradient-text">Przypomnienia o ważności dokumentów</strong> - nie musisz martwić się o terminy, my przypomnimy Ci o konieczności odnowienia pomiarów.
+                    </li>
+                    <li>
+                        <span class="checkmark">✔</span>
+                        <strong class="gradient-text">Osobiste dostarczenie dokumentów</strong> - gotowe świadectwa i pomiary przywozimy osobiście, abyś nie musiał tracić czasu.
+                    </li>
+                </ul>
+                <div class="embedded-image">
+                    <img src="photos/photo_of_tollsfor_electrician.jpg" alt="Narzędzia elektryka" class="content-image">
+                    <p class="image-caption">Profesjonalne narzędzia</p>
+                </div>
+            </div>
         </div>
 
         <div class="section fade-in">
             <h2>Więcej niż standardowa obsługa!</h2>
-            <p>W Green House idziemy o krok dalej, aby zapewnić Ci pełen komfort. W przypadku wykrycia nieprawidłowości w instalacji nie tylko Cię o nich poinformujemy, ale także wycenimy ich naprawę. Współpracujemy z notariuszami, biurami nieruchomości oraz sprawdzonymi specjalistami, takimi jak kominiarze, geodeci czy kierownicy budowy - wszystko po to, abyś miał <span class="highlight">pełne wsparcie w jednym miejscu</span>.</p>
+            <div class="content-with-images">
+                <div class="text-block">
+                    <p>W Green House idziemy o krok dalej, aby zapewnić Ci pełen komfort. W przypadku wykrycia nieprawidłowości w instalacji nie tylko Cię o nich poinformujemy, ale także wycenimy ich naprawę. Współpracujemy z notariuszami, biurami nieruchomości oraz sprawdzonymi specjalistami, takimi jak kominiarze, geodeci czy kierownicy budowy - wszystko po to, abyś miał <span class="highlight">pełne wsparcie w jednym miejscu</span>.</p>
+                </div>
+                <div class="embedded-image">
+                    <img src="photos/elektryk-pracujacy-w-panelu-elektrycznym-elektryk-w-kombinezonie.jpg" alt="Elektryk przy pracy" class="content-image">
+                    <p class="image-caption">Profesjonalna obsługa elektryczna</p>
+                </div>
+            </div>
         </div>
 
         <div class="section fade-in">
             <h2>Zawsze po Twojej stronie!</h2>
-            <p>Zajmujemy się nie tylko dokumentacją, ale i realnym wsparciem. Pomagamy w formalnościach związanych z pozwoleniem na użytkowanie budynku, doradzamy w kwestiach technicznych i dbamy o to, abyś czuł się bezpiecznie w swoim domu. Jeśli brakuje Ci dokumentów, np. projektu budowlanego czy map geodezyjnych - pomożemy je zdobyć.</p>
-            <br>
-            <p>W Green House liczy się dla nas Twój komfort i spokój. Poświęcimy Ci tyle czasu, ile będzie trzeba, abyś miał pewność, że wszystko jest dopięte na ostatni guzik. Bo to <span class="highlight">Ty będziesz mieszkać w swoim domu</span> - a my chcemy, byś czuł się w nim pewnie i bezpiecznie.</p>
+            <div class="content-with-images">
+                <div class="embedded-image">
+                    <img src="photos/serwis-pracownik-konserwacyjny-naprawa(1).jpg" alt="Serwis i konserwacja" class="content-image">
+                    <p class="image-caption">Serwis i wsparcie techniczne</p>
+                </div>
+                <div class="text-block">
+                    <p>Zajmujemy się nie tylko dokumentacją, ale i realnym wsparciem. Pomagamy w formalnościach związanych z pozwoleniem na użytkowanie budynku, doradzamy w kwestiach technicznych i dbamy o to, abyś czuł się bezpiecznie w swoim domu. Jeśli brakuje Ci dokumentów, np. projektu budowlanego czy map geodezyjnych - pomożemy je zdobyć.</p>
+                    <br>
+                    <p>W Green House liczy się dla nas Twój komfort i spokój. Poświęcimy Ci tyle czasu, ile będzie trzeba, abyś miał pewność, że wszystko jest dopięte na ostatni guzik. Bo to <span class="highlight">Ty będziesz mieszkać w swoim domu</span> - a my chcemy, byś czuł się w nim pewnie i bezpiecznie.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Nasza praca w praktyce</h2>
+            <div class="content-with-images">
+                <div class="text-block">
+                    <p>Każdy projekt traktujemy indywidualnie, dostosowując nasze usługi do specyfiki Twojego budynku i potrzeb.</p>
+                </div>
+                <div class="embedded-image">
+                    <img src="photos/3d-projekt-domu.jpg" alt="Projekt domu 3D" class="content-image">
+                    <p class="image-caption">Analiza projektu budynku</p>
+                </div>
+            </div>
         </div>
 
         <div class="cta fade-in" onclick="pulseEffect(this)">
             Skontaktuj się z nami już dziś i przekonaj się, że współpraca może być prosta i bezproblemowa!
         </div>
 
-        <div class="section contact-section fade-in">
+        <div id="contact" class="section contact-section fade-in">
             <h2>Kontakt</h2>
             <div class="contact-info">
-                <div style="margin: 25px 0;">
+                <div class="contact-row">
                     <strong>📞 Tel: </strong><a href="tel:509961824" class="phone">509 961 824</a>
                 </div>
-                <div style="margin: 25px 0;">
+                <div class="contact-row">
                     <strong>📧 Email: </strong><a href="mailto:slawomir.drezek@gmail.com" class="email">slawomir.drezek@gmail.com</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <div id="toast-container" aria-live="polite" aria-atomic="true" style="display:none"></div>
     <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>

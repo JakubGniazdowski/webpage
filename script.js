@@ -1,6 +1,8 @@
 // Create animated background particles
 function createParticles() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const bgAnimation = document.getElementById('bgAnimation');
+    if (!bgAnimation) return;
     const particleCount = 50;
 
     for (let i = 0; i < particleCount; i++) {
@@ -25,8 +27,7 @@ function showMore(type) {
         energy: "Świadectwa charakterystyki energetycznej są wymagane prawnie przy wielu okazjach. Nasze doświadczenie i profesjonalizm gwarantują szybkie i rzetelne wykonanie dokumentacji.",
         electrical: "Regularne pomiary elektryczne to podstawa bezpieczeństwa w Twoim domu. Wykrywamy potencjalne zagrożenia zanim staną się poważnym problemem."
     };
-    
-    alert(messages[type]);
+    showToast(messages[type]);
 }
 
 // Pulse effect for CTA
@@ -37,20 +38,22 @@ function pulseEffect(element) {
     }, 200);
 }
 
-// Smooth scroll reveal animation
-function revealOnScroll() {
+// Smooth scroll reveal animation using IntersectionObserver
+function setupReveal() {
     const elements = document.querySelectorAll('.fade-in');
-    const windowHeight = window.innerHeight;
-
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(el => el.classList.add('visible'));
+        return;
+    }
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    elements.forEach(el => observer.observe(el));
 }
 
 // Interactive service cards
@@ -69,7 +72,7 @@ function addServiceInteractivity() {
 }
 
 // Typing effect for title
-function typeWriter(element, text, speed = 100) {
+function typeWriter(element, text, onComplete, speed = 100) {
     let i = 0;
     element.innerHTML = '';
     
@@ -78,6 +81,8 @@ function typeWriter(element, text, speed = 100) {
             element.innerHTML += text.charAt(i);
             i++;
             setTimeout(type, speed);
+        } else if (onComplete) {
+            onComplete();
         }
     }
     type();
@@ -87,14 +92,17 @@ function typeWriter(element, text, speed = 100) {
 document.addEventListener('DOMContentLoaded', function() {
     createParticles();
     addServiceInteractivity();
-    
-    // Initial reveal
-    setTimeout(() => {
-        revealOnScroll();
-    }, 500);
-    
-    // Add scroll listener
-    window.addEventListener('scroll', revealOnScroll);
+    setupReveal();
+
+    const mainTitleElement = document.getElementById('main-title');
+    const subtitleH1Element = document.querySelector('.subtitle-h1');
+    const titleText = "Sławomir Drężek";
+
+    if (mainTitleElement && subtitleH1Element) {
+        typeWriter(mainTitleElement, titleText, () => {
+            subtitleH1Element.style.opacity = '1';
+        }, 150);
+    }
     
     // Add hover effects to buttons
     const buttons = document.querySelectorAll('.btn');
@@ -107,19 +115,26 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
+
+    // Add hover effects to embedded images
+    addImageHoverEffects();
 });
 
 // Add parallax effect to background
 window.addEventListener('scroll', () => {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const scrolled = window.pageYOffset;
     const parallax = document.querySelector('.bg-animation');
     const speed = scrolled * 0.5;
     
-    parallax.style.transform = `translateY(${speed}px)`;
+    if (parallax) {
+        parallax.style.transform = `translateY(${speed}px)`;
+    }
 });
 
 // Random particle movement
 setInterval(() => {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const particles = document.querySelectorAll('.particle');
     particles.forEach(particle => {
         const currentLeft = parseFloat(particle.style.left);
@@ -132,3 +147,43 @@ setInterval(() => {
         particle.style.top = Math.max(0, Math.min(100, newTop)) + '%';
     });
 }, 3000);
+
+// Add subtle hover effects to embedded images
+function addImageHoverEffects() {
+    const images = document.querySelectorAll('.content-image, .service-image');
+    images.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            this.style.filter = 'brightness(1.1) contrast(1.05)';
+        });
+        
+        img.addEventListener('mouseleave', function() {
+            this.style.filter = 'brightness(1) contrast(1)';
+        });
+    });
+}
+
+// Toast system
+function ensureToastContainer() {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.setAttribute('aria-live', 'polite');
+        container.setAttribute('aria-atomic', 'true');
+        document.body.appendChild(container);
+    }
+    return container;
+}
+
+function showToast(message, timeout = 4000) {
+    const container = ensureToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 300ms ease';
+        setTimeout(() => toast.remove(), 300);
+    }, timeout);
+}
