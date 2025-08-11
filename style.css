@@ -644,6 +644,12 @@ html { scroll-behavior: smooth; }
     font-weight: 600;
 }
 
+.icon-green {
+    color: var(--green-2);
+    text-shadow: 0 0 10px rgba(39, 187, 0, 0.5);
+    margin-right: 8px;
+}
+
 /* Loading animation */
 .loading {
     opacity: 0;
