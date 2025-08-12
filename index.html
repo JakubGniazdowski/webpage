@@ -9,37 +9,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-animation"></div>
 
-    <nav class="social-menu">
-        <a href="https://www.facebook.com/greenhouseinstalacje/" target="_blank" class="social-link" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.youtube.com/channel/UCCbKCn8WBzaEzQ_Bu9rbKNA" target="_blank" class="social-link" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://www.greenhouse.biz.pl/" target="_blank" class="social-link" aria-label="Greenhouse Website">
-            <img src="photos/logo_of_greenhouse.png" alt="Greenhouse Logo" class="social-logo">
-        </a>
+    <nav class="top-nav" aria-label="Główne menu">
+        <div class="nav-inner">
+            <a href="#home" class="brand">
+                <span class="brand-name">Sławomir Drężek</span>
+            </a>
+            <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#services">Usługi</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="container">
-        <header class="header fade-in">
-            <h1 class="title">
-                <span id="main-title"></span>
-                <span class="subtitle-h1">Profesjonalne Usługi Elektryczne</span>
-            </h1>
+    <section class="hero" id="home" aria-label="Hero">
+        <div class="hero-content">
+            <h1 class="title"><span id="main-title">Sławomir Drężek</span></h1>
             <p class="subtitle">Świadectwa Energetyczne w Ostrołęce</p>
-        </header>
+        </div>
+    </section>
 
-        <div class="section fade-in">
+    <div class="container">
+
+    <div class="section">
             <p class="subtitle">Zoptymalizuj zużycie energii i zapewnij bezpieczeństwo swojego domu/mieszkania.</p>
             <p class="highlight">Oszczędzaj energię i pieniądze!</p>
-            <p>Firma Green House oferuje profesjonalną obsługę w zakresie świadectw charakterystyki energetycznej i pomiarów elektrycznych.</p>
+            <p>Firma Sławomir Drężek oferuje profesjonalną obsługę w zakresie świadectw charakterystyki energetycznej i pomiarów elektrycznych.</p>
         </div>
 
         <!-- Two-column services section -->
-        <div class="services-container fade-in">
+    <div class="services-container" id="services">
             <!-- Left side - Świadectwa Charakterystyki Energetycznej -->
             <div class="service-side" id="energyCertificates">
                 <div class="service-icon">🏠</div>
@@ -51,7 +54,7 @@
                 </div>
 
                 <div class="service-image-container">
-                    <img src="photos/energy_classes.jpg" alt="Klasy energetyczne" class="service-image">
+                    <img src="photos/energy_classes.jpg" alt="Klasy energetyczne" class="service-image" loading="lazy">
                 </div>
 
                 <div class="service-feature">
@@ -83,7 +86,7 @@
                 </div>
 
                 <div class="service-image-container">
-                    <img src="photos/photo_ofmultimeter.jpg" alt="Multimetr - pomiary elektryczne" class="service-image">
+                    <img src="photos/photo_ofmultimeter.jpg" alt="Multimetr - pomiary elektryczne" class="service-image" loading="lazy">
                 </div>
 
                 <div class="service-feature">
@@ -105,7 +108,7 @@
             </div>
         </div>
 
-        <div class="section fade-in">
+    <div class="section">
             <h2>Dlaczego warto nam zaufać?</h2>
             <h3 class="gradient-text subheading">Gwarantujemy:</h3>
             
@@ -129,58 +132,58 @@
                     </li>
                 </ul>
                 <div class="embedded-image">
-                    <img src="photos/photo_of_tollsfor_electrician.jpg" alt="Narzędzia elektryka" class="content-image">
+                    <img src="photos/photo_of_tollsfor_electrician.jpg" alt="Narzędzia elektryka" class="content-image" loading="lazy">
                     <p class="image-caption">Profesjonalne narzędzia</p>
                 </div>
             </div>
         </div>
 
-        <div class="section fade-in">
+    <div class="section">
             <h2>Więcej niż standardowa obsługa!</h2>
             <div class="content-with-images">
                 <div class="text-block">
-                    <p>W Green House idziemy o krok dalej, aby zapewnić Ci pełen komfort. W przypadku wykrycia nieprawidłowości w instalacji nie tylko Cię o nich poinformujemy, ale także wycenimy ich naprawę. Współpracujemy z notariuszami, biurami nieruchomości oraz sprawdzonymi specjalistami, takimi jak kominiarze, geodeci czy kierownicy budowy - wszystko po to, abyś miał <span class="highlight">pełne wsparcie w jednym miejscu</span>.</p>
+                    <p>W Sławomir Drężek idziemy o krok dalej, aby zapewnić Ci pełen komfort. W przypadku wykrycia nieprawidłowości w instalacji nie tylko Cię o nich poinformujemy, ale także wycenimy ich naprawę. Współpracujemy z notariuszami, biurami nieruchomości oraz sprawdzonymi specjalistami, takimi jak kominiarze, geodeci czy kierownicy budowy - wszystko po to, abyś miał <span class="highlight">pełne wsparcie w jednym miejscu</span>.</p>
                 </div>
                 <div class="embedded-image">
-                    <img src="photos/elektryk-pracujacy-w-panelu-elektrycznym-elektryk-w-kombinezonie.jpg" alt="Elektryk przy pracy" class="content-image">
+                    <img src="photos/elektryk-pracujacy-w-panelu-elektrycznym-elektryk-w-kombinezonie.jpg" alt="Elektryk przy pracy" class="content-image" loading="lazy">
                     <p class="image-caption">Profesjonalna obsługa elektryczna</p>
                 </div>
             </div>
         </div>
 
-        <div class="section fade-in">
+    <div class="section">
             <h2>Zawsze po Twojej stronie!</h2>
             <div class="content-with-images">
                 <div class="embedded-image">
-                    <img src="photos/serwis-pracownik-konserwacyjny-naprawa(1).jpg" alt="Serwis i konserwacja" class="content-image">
+                    <img src="photos/serwis-pracownik-konserwacyjny-naprawa(1).jpg" alt="Serwis i konserwacja" class="content-image" loading="lazy">
                     <p class="image-caption">Serwis i wsparcie techniczne</p>
                 </div>
                 <div class="text-block">
                     <p>Zajmujemy się nie tylko dokumentacją, ale i realnym wsparciem. Pomagamy w formalnościach związanych z pozwoleniem na użytkowanie budynku, doradzamy w kwestiach technicznych i dbamy o to, abyś czuł się bezpiecznie w swoim domu. Jeśli brakuje Ci dokumentów, np. projektu budowlanego czy map geodezyjnych - pomożemy je zdobyć.</p>
                     <br>
-                    <p>W Green House liczy się dla nas Twój komfort i spokój. Poświęcimy Ci tyle czasu, ile będzie trzeba, abyś miał pewność, że wszystko jest dopięte na ostatni guzik. Bo to <span class="highlight">Ty będziesz mieszkać w swoim domu</span> - a my chcemy, byś czuł się w nim pewnie i bezpiecznie.</p>
+                    <p>W Sławomir Drężek liczy się dla nas Twój komfort i spokój. Poświęcimy Ci tyle czasu, ile będzie trzeba, abyś miał pewność, że wszystko jest dopięte na ostatni guzik. Bo to <span class="highlight">Ty będziesz mieszkać w swoim domu</span> - a my chcemy, byś czuł się w nim pewnie i bezpiecznie.</p>
                 </div>
             </div>
         </div>
 
-        <div class="section fade-in">
+    <div class="section">
             <h2>Nasza praca w praktyce</h2>
             <div class="content-with-images">
                 <div class="text-block">
                     <p>Każdy projekt traktujemy indywidualnie, dostosowując nasze usługi do specyfiki Twojego budynku i potrzeb.</p>
                 </div>
                 <div class="embedded-image">
-                    <img src="photos/3d-projekt-domu.jpg" alt="Projekt domu 3D" class="content-image">
+                    <img src="photos/3d-projekt-domu.jpg" alt="Projekt domu 3D" class="content-image" loading="lazy">
                     <p class="image-caption">Analiza projektu budynku</p>
                 </div>
             </div>
         </div>
 
-        <div class="cta fade-in" onclick="pulseEffect(this)">
+    <div class="cta" onclick="pulseEffect(this)">
             Skontaktuj się z nami już dziś i przekonaj się, że współpraca może być prosta i bezproblemowa!
         </div>
 
-        <div id="contact" class="section contact-section fade-in">
+    <div id="contact" class="section contact-section">
             <h2>Kontakt</h2>
             <div class="contact-info">
                 <div class="contact-row">

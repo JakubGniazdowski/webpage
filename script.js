@@ -3,7 +3,7 @@ function createParticles() {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const bgAnimation = document.getElementById('bgAnimation');
     if (!bgAnimation) return;
-    const particleCount = 50;
+    const particleCount = window.innerWidth <= 768 ? 15 : 40;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -38,23 +38,6 @@ function pulseEffect(element) {
     }, 200);
 }
 
-// Smooth scroll reveal animation using IntersectionObserver
-function setupReveal() {
-    const elements = document.querySelectorAll('.fade-in');
-    if (!('IntersectionObserver' in window)) {
-        elements.forEach(el => el.classList.add('visible'));
-        return;
-    }
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-    elements.forEach(el => observer.observe(el));
-}
 
 // Interactive service cards
 function addServiceInteractivity() {
@@ -72,36 +55,17 @@ function addServiceInteractivity() {
 }
 
 // Typing effect for title
-function typeWriter(element, text, onComplete, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        } else if (onComplete) {
-            onComplete();
-        }
-    }
-    type();
-}
+
 
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', function() {
     createParticles();
     addServiceInteractivity();
-    setupReveal();
+    // reveal animations disabled
 
     const mainTitleElement = document.getElementById('main-title');
-    const subtitleH1Element = document.querySelector('.subtitle-h1');
-    const titleText = "Sławomir Drężek";
-
-    if (mainTitleElement && subtitleH1Element) {
-        typeWriter(mainTitleElement, titleText, () => {
-            subtitleH1Element.style.opacity = '1';
-        }, 150);
+    if (mainTitleElement) {
+        mainTitleElement.innerText = "Sławomir Drężek";
     }
     
     // Add hover effects to buttons
@@ -118,19 +82,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add hover effects to embedded images
     addImageHoverEffects();
+
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }));
+    }
 });
 
 // Add parallax effect to background
-window.addEventListener('scroll', () => {
+let _scrollTicking = false;
+function onScrollOptimized() {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.bg-animation');
-    const speed = scrolled * 0.5;
-    
-    if (parallax) {
-        parallax.style.transform = `translateY(${speed}px)`;
-    }
-});
+    if (_scrollTicking) return;
+    _scrollTicking = true;
+    requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        // Particle parallax
+        const particleLayer = document.querySelector('.bg-animation');
+        if (particleLayer) {
+            particleLayer.style.transform = `translateY(${scrolled * 0.4}px)`;
+        }
+        // Hero image parallax via background-position (enabled on all screens)
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            const factor = window.innerWidth <= 768 ? 0.18 : 0.35;
+            hero.style.backgroundPosition = `center ${Math.round(scrolled * factor)}px`;
+        }
+        _scrollTicking = false;
+    });
+}
+window.addEventListener('scroll', onScrollOptimized, { passive: true });
 
 // Random particle movement
 setInterval(() => {
