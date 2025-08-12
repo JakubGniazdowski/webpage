@@ -578,6 +578,14 @@ body {
     
 }
 
+/* Align tools image to bottom of the adjacent text on desktop */
+@media (min-width: 1025px) {
+    .content-with-images { align-items: stretch; }
+    .text-block { display: flex; flex-direction: column; }
+    .embedded-image.tools-align { display: flex; flex-direction: column; justify-content: flex-end; }
+    .content-image.tools-photo { object-position: center bottom; }
+}
+
 .content-image {
     width: 100%;
     max-width: 420px;
