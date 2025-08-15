@@ -83,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add hover effects to embedded images
     addImageHoverEffects();
 
+    // Initialize hero slider
+    initHeroSlider();
+
     // Mobile nav toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -110,12 +113,6 @@ function onScrollOptimized() {
         const particleLayer = document.querySelector('.bg-animation');
         if (particleLayer) {
             particleLayer.style.transform = `translateY(${scrolled * 0.4}px)`;
-        }
-        // Hero image parallax via background-position (enabled on all screens)
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            const factor = window.innerWidth <= 768 ? 0.18 : 0.35;
-            hero.style.backgroundPosition = `center ${Math.round(scrolled * factor)}px`;
         }
         _scrollTicking = false;
     });
@@ -176,4 +173,75 @@ function showToast(message, timeout = 4000) {
         toast.style.transition = 'opacity 300ms ease';
         setTimeout(() => toast.remove(), 300);
     }, timeout);
+}
+
+// HERO SLIDER
+function initHeroSlider() {
+    const slider = document.querySelector('.hero-slider');
+    if (!slider) return;
+
+    const slides = Array.from(slider.querySelectorAll('.slide'));
+    const prevBtn = document.querySelector('.hero-arrow.prev');
+    const nextBtn = document.querySelector('.hero-arrow.next');
+    const dotsContainer = document.querySelector('.hero-dots');
+    let current = 0;
+    let timer = null;
+    const interval = 5000;
+
+    // Build dots
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'hero-dot' + (i === current ? ' active' : '');
+            dot.setAttribute('aria-label', `Przejdź do slajdu ${i+1}`);
+            dot.addEventListener('click', () => goTo(i, true));
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    function update() {
+        slides.forEach((s, i) => s.classList.toggle('active', i === current));
+        if (dotsContainer) {
+            dotsContainer.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+    }
+
+    function goTo(i, pause) {
+        current = (i + slides.length) % slides.length;
+        update();
+        if (pause) restart();
+    }
+
+    const next = () => goTo(current + 1, true);
+    const prev = () => goTo(current - 1, true);
+
+    // Controls
+    prevBtn && prevBtn.addEventListener('click', prev);
+    nextBtn && nextBtn.addEventListener('click', next);
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+    });
+
+    // Swipe
+    let startX = 0; let dragging = false;
+    slider.addEventListener('touchstart', (e) => { dragging = true; startX = e.touches[0].clientX; stop(); }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+        if (!dragging) return;
+        const dx = (e.changedTouches && e.changedTouches[0].clientX) - startX;
+        if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+        startX = 0; dragging = false; start();
+    });
+
+    // Autoplay
+    function start() { stop(); timer = setInterval(() => goTo(current + 1), interval); }
+    function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    // Init
+    update();
+    if (slides.length > 1) start();
 }

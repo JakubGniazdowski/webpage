@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background particles layer -->
+    <div id="bgAnimation" class="bg-animation" aria-hidden="true"></div>
 
     <nav class="top-nav" aria-label="Główne menu">
         <div class="nav-inner">
@@ -27,9 +29,24 @@
     </nav>
 
     <section class="hero" id="home" aria-label="Hero">
+        <!-- Hero image slider -->
+        <div class="hero-slider" role="region" aria-label="Galeria zdjęć">
+            <div class="slide active" style="background-image: url('photos/home_picture.jpg');" aria-hidden="false"></div>
+            <div class="slide" style="background-image: url('photos/photo_of_tollsfor_electrician.jpg');" aria-hidden="true"></div>
+            <div class="slide" style="background-image: url('photos/tools.jpg');" aria-hidden="true"></div>
+        </div>
+
+        <!-- Overlayed title/subtitle -->
         <div class="hero-content">
             <h1 class="title"><span id="main-title">Sławomir Drężek</span></h1>
-            <p class="subtitle">Świadectwo energetyczne i pomiary elektryczne w Ostrołęce</p>
+            <p class="subtitle"> Świadectwa Charakterystyki Energetycznej i Pomiary elektryczne</p>
+        </div>
+
+        <!-- Slider controls (arrows and dots) -->
+        <div class="hero-controls" aria-hidden="false">
+            <button class="hero-arrow prev" aria-label="Poprzednie zdjęcie" title="Poprzednie">&#10094;</button>
+            <button class="hero-arrow next" aria-label="Następne zdjęcie" title="Następne">&#10095;</button>
+            <div class="hero-dots" role="tablist" aria-label="Wybierz zdjęcie"></div>
         </div>
     </section>
 
@@ -131,10 +148,7 @@
                         <strong class="gradient-text">Osobiste dostarczenie dokumentów</strong> - gotowe świadectwa i pomiary przywozimy osobiście, abyś nie musiał tracić czasu.
                     </li>
                 </ul>
-                <div class="embedded-image tools-align">
-                    <img src="photos/photo_of_tollsfor_electrician.jpg" alt="Narzędzia elektryka" class="content-image tools-photo" loading="lazy">
-                    <p class="image-caption">Profesjonalne narzędzia</p>
-                </div>
+                
             </div>
         </div>
 
@@ -142,7 +156,7 @@
             <h2>Więcej niż standardowa obsługa!</h2>
             <div class="content-with-images">
                 <div class="text-block">
-                    <p>W Sławomir Drężek idziemy o krok dalej, aby zapewnić Ci pełen komfort. W przypadku wykrycia nieprawidłowości w instalacji nie tylko Cię o nich poinformujemy, ale także wycenimy ich naprawę. Współpracujemy z notariuszami, biurami nieruchomości oraz sprawdzonymi specjalistami, takimi jak kominiarze, geodeci czy kierownicy budowy - wszystko po to, abyś miał <span class="highlight">pełne wsparcie w jednym miejscu</span>.</p>
+                    <p>W naszej pracy idziemy o krok dalej, aby zapewnić Ci pełen komfort. W przypadku wykrycia nieprawidłowości w instalacji nie tylko Cię o nich poinformujemy, ale także wycenimy ich naprawę. Współpracujemy z notariuszami, biurami nieruchomości oraz sprawdzonymi specjalistami, takimi jak kominiarze, geodeci czy kierownicy budowy - wszystko po to, abyś miał <span class="highlight">pełne wsparcie w jednym miejscu</span>.</p>
                 </div>
                 <div class="embedded-image">
                     <img src="photos/elektryk-pracujacy-w-panelu-elektrycznym-elektryk-w-kombinezonie.jpg" alt="Elektryk przy pracy" class="content-image" loading="lazy">
@@ -184,14 +198,16 @@
         </div>
 
     <div id="contact" class="section contact-section">
-            <h2>Kontakt</h2>
-            <div class="contact-info">
-                <div class="contact-row">
-                    <strong><i class="fas fa-phone icon-green"></i> Tel: </strong><a href="tel:509961824" class="phone">509 961 824</a>
+            <div class="contact-decor orb orb-1" aria-hidden="true"></div>
+            <div class="contact-decor orb orb-2" aria-hidden="true"></div>
+            <div class="contact-card">
+                <h2>Skontaktuj się</h2>
+                <p class="contact-subtitle">Porozmawiaj z ekspertem już teraz</p>
+                <div class="contact-cta">
+                    <a href="tel:509961824" class="btn-cta btn-call"><i class="fas fa-phone"></i> Zadzwoń: 509&nbsp;961&nbsp;824</a>
+                    <a href="mailto:slawomir.drezek@gmail.com" class="btn-cta btn-email"><i class="fas fa-envelope"></i> Napisz e-mail</a>
                 </div>
-                <div class="contact-row">
-                    <strong><i class="fas fa-envelope icon-green"></i> Email: </strong><a href="mailto:slawomir.drezek@gmail.com" class="email">slawomir.drezek@gmail.com</a>
-                </div>
+                
             </div>
         </div>
     </div>
